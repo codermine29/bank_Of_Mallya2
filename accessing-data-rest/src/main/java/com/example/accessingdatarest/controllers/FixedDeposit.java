@@ -12,40 +12,39 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/*
+import com.example.accessingdatarest.models.User;
+import com.example.accessingdatarest.security.services.UserDetailsImpl;
+
+import jakarta.validation.Valid;
+
+
+
 @RestController
 public class FixedDeposit {
 	
 	@Autowired
-	private DepositAmount depositAmount;
-	
-	
-	@Autowired
-	private AccountNumber accountNumber;
-	
+	FixedDepositsService fixedDepositsService;
 	
 	@Autowired
-	private TimeDuration timeDuration;
-	
+	FixedDepositHoldersService fixedDepositHoldersService;
 	
 	@Autowired
-	private Interest interest;
+	FixedDepositSupport fixedDepositSupport;
 	
-	public void setDepositAmount(DepositAmount depositAmount)
+	public void setFixedDepositsService(FixedDepositsService fixedDepositsService)
 	{
-		this.DepositAmount = depositAmount;
+		this.fixedDepositsService = fixedDepositsService;
 	}
-	
-	public void setAccountNumber(AccountNumber accountNumber) 
+	public void setFixedDepositHoldersService(FixedDepositHoldersService fixedDepositHoldersService) 
 	{
-		this.AccountNumber = accountNumber;
+		this.fixedDepositHoldersService = fixedDepositHoldersService;
 	}
-	
 	public void setFixedDepositSupport(FixedDepositSupport fixedDepositSupport)
 	{
 		this.fixedDepositSupport = fixedDepositSupport;
 	}
 	
+	@GetMapping(value="/getFixedDepositDetails/fixeddepositholderid/{fdh_id}",produces= {"application/json","application/xml"})
 	public ResponseEntity<FixedDepositHolders> getFixedDepositDetails(@PathVariable int fdh_id)
 	{
 		try
@@ -97,4 +96,4 @@ public class FixedDeposit {
 				 }
 	
 }
-*/
+
